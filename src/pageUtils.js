@@ -1,0 +1,1 @@
+export const pageCount = (itemsPerPage, totalItems) => Math.ceil(totalItems / itemsPerPage);

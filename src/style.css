@@ -1,0 +1,127 @@
+h1, p {
+  font-family: Lato;
+}
+
+.section {
+  background: #E5E6E4;
+  border-radius: 5px;
+  margin: 20px;
+  padding: 20px;
+  width: 680px;
+  overflow: hidden;
+}
+
+.section:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+li {
+  margin-right: 0.5em;
+  user-select: none;
+}
+
+li.selected {
+  font-weight: bold;
+}
+
+li:not(.selected) {
+  text-decoration: underline;
+  cursor: pointer;
+  color: deeppink;
+}
+
+label {
+  display: inline-block;
+  width: 150px;
+  line-height: 26px;
+}
+
+input:not([type=checkbox]) {
+  width: calc(100% - 150px);
+  padding: 5px;
+  margin: 5px 0;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 3px;
+}
+
+input {
+  margin-bottom: 5px;
+}
+
+button {
+  padding: 5px;
+  
+  width: 80px;
+  color: deeppink;
+  border-color: deeppink;
+  border-style: solid;
+  border-width: 1px;
+  background: #E5E6E4;
+  cursor: pointer;
+  float: right;
+}
+
+.task button {
+  margin: 5px 0 5px 10px;
+}
+
+.newTask {
+  float: left;
+}
+
+.task button,
+.login button {
+  margin-top: 15px
+}
+
+button:focus {
+  outline: none;
+}
+
+table {
+  border-collapse: collapse; 
+  width: 100%;
+  table-layout: fixed;
+  word-break: break-all;
+}
+
+th, td {
+  padding: 5px 20px;
+  text-align: left;
+  min-width: 60px;
+}
+
+table tbody tr:first-child td {
+  padding-top: 20px;
+  border-top: solid 1px darkgray;
+}
+
+thead th {
+  text-align: center;
+  font-weight: bold;  
+  cursor: pointer;
+  user-select: none;
+  line-height: 20px;
+}
+
+.error 
+{
+  color: deeppink;
+  text-align: right;
+  white-space: pre-wrap;
+}
+
+i {
+  white-space: pre;
+  font-style: normal;
+}
