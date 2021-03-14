@@ -11,12 +11,13 @@ const makeStatus = (done, editedByAdmin) => (done ? 10 : 0) + (editedByAdmin ? 1
 export function Task() {
     const dispatch = useDispatch();
 
+    const tasks = useSelector(state => state.tasks);
     const editableTaskId = useSelector(state => state.editableTaskId);
     const auth = useSelector(state => state.auth);
 
     const isNewTask = NEWLY_CREATED_TASK_ID === editableTaskId;
     const task = !isNewTask && useSelector(state => state.tasks.visibleTasks.find(it => it.id === editableTaskId));
-
+    
     const [name, setName] = useState(task && task.username || "");
     const [email, setEmail] = useState(task && task.email || "");
     const [text, setText] = useState(task && task.text || "");
@@ -33,7 +34,7 @@ export function Task() {
                 makeStatus(done, task.editedByAdmin || task.text !== text));
 
         if (saveResponse.status == STATUS_OK) {
-            dispatch(fetchTasksSuccess(await getTasks()));
+            dispatch(fetchTasksSuccess(await getTasks(tasks.sortField, tasks.sortDirection, tasks.currentPageIndex)));
             dispatch(stopEditingTask());
         } else if (saveResponse.message.token) {
             setError("Auth failed. Please log in.");
