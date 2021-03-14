@@ -22,8 +22,6 @@ export const startEditingTask = taskId => ({
 export const STOP_EDITING_TASK = "STOP_EDITING_TASK";
 export const stopEditingTask = () => ({ type: STOP_EDITING_TASK });
 
-
-
 export const SORT_TASKS = "SORT_TASKS";
 export const sortTasks = (sortField, sortDirection) => ({
     type: SORT_TASKS,

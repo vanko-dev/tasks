@@ -22,7 +22,7 @@ const tasks = (state = DEFAULT_TASKS_STATE, action) => {
     switch (action.type) {
         case FETCH_TASKS_SUCCESS:
             const totalTasksCount = parseInt(action.response.message.total_task_count);
-            const x = {
+            return {
                 ...state,
                 totalTasksCount: totalTasksCount,
                 currentPageIndex: Math.min(
@@ -30,7 +30,6 @@ const tasks = (state = DEFAULT_TASKS_STATE, action) => {
                     state.currentPageIndex),
                 visibleTasks: action.response.message.tasks
             };
-            return x;
 
         case GO_TO_TASK_PAGE:
             return {

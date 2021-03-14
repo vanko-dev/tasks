@@ -9,7 +9,7 @@ export const TASK_STATUS = "status";
 export const SORT_ASC = "asc";
 export const SORT_DESC = "desc";
 
-export const getTasks = (sortField = "id", sortDirection = "asc", pageIndex = 1) =>
+export const getTasks = (sortField = "id", sortDirection = "asc", pageIndex = 0) =>
     get("", {
         sort_field: sortField,
         sort_direction: sortDirection,

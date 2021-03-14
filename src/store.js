@@ -22,7 +22,7 @@ const initAuth = store => {
             store.dispatch(logout());
         };
     })
-    
+
     return store;
 }
 
@@ -35,8 +35,6 @@ const authPersistMiddleware = store => next => action => {
         if (action.type == LOGOUT) {
             localStorage.removeItem(authTokenKey);
         }
-
-
     } catch (err) {
         console.error("Caught an exception!", err)
     }
