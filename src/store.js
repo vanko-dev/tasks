@@ -13,6 +13,16 @@ const authTokenKey = "authToken";
 const initAuth = store => {
     const storedAuthToken = localStorage.getItem(authTokenKey);
     storedAuthToken && store.dispatch(loginSuccess(storedAuthToken));
+
+    window.addEventListener('storage', () => {
+        const storedAuthToken = localStorage.getItem(authTokenKey);
+        if (storedAuthToken) {
+            store.dispatch(loginSuccess(storedAuthToken));
+        } else {
+            store.dispatch(logout());
+        };
+    })
+    
     return store;
 }
 
@@ -26,15 +36,7 @@ const authPersistMiddleware = store => next => action => {
             localStorage.removeItem(authTokenKey);
         }
 
-        window.addEventListener('storage', () => {
-            const storedAuthToken = localStorage.getItem(authTokenKey);
-            if (storedAuthToken) {
-                store.dispatch(loginSuccess(storedAuthToken));
-            } else {
-                store.dispatch(logout());
-            }
 
-        })
     } catch (err) {
         console.error("Caught an exception!", err)
     }
